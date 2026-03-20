@@ -1,0 +1,6 @@
+python check_env.py
+python generate_toy_dataset.py --output_dir toy_dataset
+python train.py --data_dir toy_dataset --model baseline --epochs 5 --batch_size 8
+python train.py --data_dir toy_dataset --model gate --epochs 5 --batch_size 8
+python prepare_brats_slices.py --brats_root /path/to/BraTS2021 --output_dir data_npz --max_cases 20
+python predict_case.py --checkpoint outputs/gate_xxx/best_model.pt --case_dir /path/to/BraTS2021_00000 --output_dir predictions
